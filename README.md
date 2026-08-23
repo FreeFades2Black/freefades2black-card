@@ -49,3 +49,5 @@ This repository contains a GitHub Actions workflow (`.github/workflows/publish.y
 1. Push your repository to GitHub: `https://github.com/FreeFades2Black/freefades2black-card`
 2. Create a new release (or trigger manually via **Actions** -> **Publish Package to GitHub Packages**).
 3. The package will automatically appear under your [GitHub Packages](https://github.com/FreeFades2Black?tab=packages) tab!
+
+<!-- Cyberpunk Terminal Matrix v1.0.0 Online -->
