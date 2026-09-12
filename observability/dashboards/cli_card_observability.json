@@ -1,0 +1,38 @@
+{
+  "title": "Developer Card CLI Golden Signals",
+  "schemaVersion": 38,
+  "panels": [
+    {
+      "title": "NPM Package Weekly Downloads",
+      "type": "stat",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "expr": "npm_downloads_weekly_total",
+          "legendFormat": "Weekly Invocations"
+        }
+      ]
+    },
+    {
+      "title": "CLI Startup Execution Time (ms)",
+      "type": "timeseries",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "targets": [
+        {
+          "expr": "node_cli_execution_duration_ms",
+          "legendFormat": "Execution Time (ms)"
+        }
+      ]
+    }
+  ]
+}
