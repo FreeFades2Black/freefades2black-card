@@ -61,3 +61,12 @@ python -m pytest tests/test_card.py -v
 
 * **Interactive Menu Navigation:** Card currently displays static professional summary; interactive arrow-key terminal menu navigation for portfolio project drill-down is scheduled for Q4.
 * **Direct PGP Key Export:** Contact data currently provides email/social links; inline `--pgp` public key export flag is planned for Q1 2027.
+
+## Automated CI Maintenance Log
+<!-- START_AGENT_MAINTENANCE_LOG -->
+#### Maintenance Run: `2026-10-01 20:52:35 UTC`
+- `.github/workflows/publish.yml`: Upgrade actions/checkout from v4 to v7 for security & performance. [Research: RCSB PDB AI Help Desk: retrieval-augmented generation for protein structure deposition support (OpenAlex / Global University Research)] [NIST SP 800-218 PW.4]
+- `.github/workflows/publish.yml`: Upgrade actions/setup-node from v4 to v7 for security & performance. [Research: RCSB PDB AI Help Desk: retrieval-augmented generation for protein structure deposition support (OpenAlex / Global University Research)] [NIST SP 800-218 PW.4]
+- `.github/workflows/publish.yml`: Enforce timeout-minutes: 10 to kill hung processes and prevent runaway billing (CISA & FinOps).
+
+<!-- END_AGENT_MAINTENANCE_LOG -->
