@@ -1,7 +1,7 @@
 {
   "name": "@freefades2black/card",
-  "version": "1.0.1",
-  "description": "Interactive Cyberpunk Terminal Business Card for FreeFades2Black",
+  "version": "1.1.0",
+  "description": "Interactive Cyberpunk Terminal Business Card & Resume Hub for FreeFades2Black",
   "main": "bin/card.js",
   "bin": {
     "freefades2black": "./bin/card.js",
@@ -15,7 +15,7 @@
   "type": "commonjs",
   "scripts": {
     "start": "node bin/card.js",
-    "test": "node bin/card.js"
+    "test": "node bin/card.js --no-interactive"
   },
   "repository": {
     "type": "git",
@@ -25,15 +25,17 @@
     "card",
     "terminal",
     "business-card",
+    "resume",
     "freefades2black",
     "for-your-service",
     "cyberpunk",
     "cli"
   ],
-  "author": "FreeFades2Black",
+  "author": "William Free Hall (FreeFades2Black) <whall4.wh@gmail.com>",
   "license": "MIT",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
   },
   "bugs": {
     "url": "https://github.com/FreeFades2Black/freefades2black-card/issues"

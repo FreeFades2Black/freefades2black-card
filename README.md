@@ -1,59 +1,65 @@
-# `@freefades2black/card` — Interactive Cyberpunk Terminal Business Card
+# `@freefades2black/card` — Interactive Cyberpunk Terminal Card & Resume Hub
 
-Interactive Cyberpunk Terminal Business Card for **William Free Hall (`FreeFades2Black`)** — Solutions Architect, Cloud/Data Engineer & U.S. Army Special Forces Veteran (`18Z / 18F`).
+<p align="center">
+  <img src="assets/terminal-preview.svg" alt="FreeFades2Black Interactive Terminal Card Preview" width="100%" />
+</p>
 
-🌐 **Live Interactive Web Card (Browser / Mobile / LinkedIn):**  
+Interactive Cyberpunk Terminal Business Card & Resume Hub for **William Free Hall (`FreeFades2Black`)** — Solutions Architect, Cloud/Data Engineer & U.S. Army Special Forces Veteran (`18Z / 18F`, 23 years active duty).
+
+🌐 **Live NFC / Mobile / Browser Interactive Terminal:**  
 👉 **[https://freefades2black.github.io/freefades2black-card/](https://freefades2black.github.io/freefades2black-card/)**
 
 ---
 
-## ⚡ Quick Share & Run (Zero Auth / Any Machine)
+## ⚡ Run Instantly in Any Terminal (Zero Install / Zero Config)
 
-Because GitHub Packages (`npm.pkg.github.com`) requires a personal access token even for public packages, share any of the **zero-config commands below** so anyone can run your card immediately without setting up an `.npmrc`:
-
-### 1. Universal `npx` (macOS, Linux, Windows Terminal, PowerShell)
 ```bash
+# Universal npx runner (launches interactive arrow-key menu in terminal)
 npx github:FreeFades2Black/freefades2black-card
-```
 
-### 2. Machine-Readable JSON Mode
-```bash
+# Machine-readable JSON output
 npx github:FreeFades2Black/freefades2black-card --json
-```
 
-### 3. Instant Zero-Node Terminal Stream (`curl` / PowerShell `irm`)
-Works even on machines without Node.js installed:
-```bash
-# Linux / macOS / Omarchy Arch Linux
+# Instant ANSI stream (works even without Node.js installed)
 curl -sL https://freefades2black.github.io/freefades2black-card/card.ans
-
-# Windows PowerShell
 irm https://freefades2black.github.io/freefades2black-card/card.ans
 ```
 
 ---
 
-## 📦 GitHub Packages Installation (Authenticated)
+## 🧭 Interactive Menu Options
 
-If installing via GitHub Packages (`@freefades2black/card`):
-```bash
-npm install @freefades2black/card --registry=https://npm.pkg.github.com
+When executed in an interactive terminal (`npx github:FreeFades2Black/freefades2black-card`), use the `↑`/`↓` arrow keys or number keys `1`–`6` to explore:
+
+```text
+? What would you like to explore? (Use ↑/↓ arrows or keys 1-6, Enter to select, 0/q to exit)
+❯ 1. Core Competencies & Cloud Architecture
+  2. Experience & Leadership History
+  3. Live Projects & GitHub Repos (Open Browser)
+  4. Certifications & Credentials
+  5. Open Interactive Web Portfolio (Open Browser)
+  6. Direct Contact & LinkedIn (Open Browser)
+  0. Exit
 ```
 
 ---
 
-## 🛠️ Local Development & Verification
+## 📲 Ready-to-Use Sharing Snippets
 
-```bash
-git clone https://github.com/FreeFades2Black/freefades2black-card.git
-cd freefades2black-card
+### 1. Physical NFC Card Target URL
+Program your NFC tag to open:
+```text
+https://freefades2black.github.io/freefades2black-card/
+```
 
-# Run card locally
-node bin/card.js
+### 2. LinkedIn Featured / About Banner
+> Skip the PDF resume. Inspect my architecture portfolio live in your shell:  
+> `npx github:FreeFades2Black/freefades2black-card`  
+> Or in your browser: https://freefades2black.github.io/freefades2black-card/
 
-# Run JSON output
-node bin/card.js --json
-
-# Run automated pytest verification suite
-python -m pytest tests/test_card.py -v
+### 3. Email Signature & Cover Note Hook
+```text
+Free Hall | Solutions Architect & Cloud/Data Engineer
+Terminal Card: npx github:FreeFades2Black/freefades2black-card
+Web Terminal:  https://freefades2black.github.io/freefades2black-card/
 ```

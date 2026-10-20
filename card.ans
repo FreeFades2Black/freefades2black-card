@@ -1,27 +1,27 @@
 
 [38;2;0;255;102m┌────────────────────────────────────────────────────────────────────────────────────┐[0m
-[38;2;0;255;102m│[0m  [38;2;0;240;255m[1mFREEFADES2BLACK[0m [2m//[0m [38;2;255;230;0m[1mCYBERPUNK COMMAND MATRIX v1.0[0m                                  [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;120;120;120mStatus: 100% OPERATIONAL | Security Matrix: ACTIVE[0m                                [38;2;0;255;102m│[0m
+[38;2;0;255;102m│[0m  [38;2;0;240;255m[1mFREEFADES2BLACK[0m [2m//[0m [38;2;255;230;0m[1mCYBERPUNK COMMAND MATRIX v1.1[0m                                  [38;2;0;255;102m│[0m
+[38;2;0;255;102m│[0m  [38;2;140;148;158mStatus: 100% OPERATIONAL | Security Matrix: ACTIVE[0m                                [38;2;0;255;102m│[0m
 [38;2;0;255;102m├────────────────────────────────────────────────────────────────────────────────────┤[0m
 [38;2;0;255;102m│[0m                                                                                    [38;2;0;255;102m│[0m
 [38;2;0;255;102m│[0m  [38;2;255;0;128m[1mOPERATOR PROFILE[0m                                                                  [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;240;240;240m[1mOperator:[0m     William Free Hall (Free)                                            [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;240;240;240m[1mRole:[0m         Solutions Architect & Cloud/Data Engineer                           [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;240;240;240m[1mService:[0m      18Z / 18F, US Army Special Forces (Ret.)                            [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;240;240;240m[1mAffiliation:[0m  Partner: 7 Eagle Group                                              [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;240;240;240m[1mOrganization:[0m For-Your-Service                                                    [38;2;0;255;102m│[0m
+[38;2;0;255;102m│[0m  [38;2;240;246;252m[1mOperator:[0m     William Free Hall (Free)                                            [38;2;0;255;102m│[0m
+[38;2;0;255;102m│[0m  [38;2;240;246;252m[1mRole:[0m         Solutions Architect & Cloud/Data Engineer                           [38;2;0;255;102m│[0m
+[38;2;0;255;102m│[0m  [38;2;240;246;252m[1mService:[0m      18Z / 18F, US Army Special Forces (Ret.)                            [38;2;0;255;102m│[0m
+[38;2;0;255;102m│[0m  [38;2;240;246;252m[1mAffiliation:[0m  Partner: 7 Eagle Group                                              [38;2;0;255;102m│[0m
+[38;2;0;255;102m│[0m  [38;2;240;246;252m[1mOrganization:[0m For-Your-Service                                                    [38;2;0;255;102m│[0m
 [38;2;0;255;102m│[0m                                                                                    [38;2;0;255;102m│[0m
 [38;2;0;255;102m│[0m  [38;2;0;240;255m[1mCORE SUBSYSTEMS & STACK[0m                                                           [38;2;0;255;102m│[0m
 [38;2;0;255;102m│[0m  [38;2;255;102;0m> Data Platform:[0m Databricks Lakehouse, Apache PySpark, Delta Lake                 [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;53;149;255m> Cloud Infra:[0m   AWS, GCP, Azure, Terraform IaC, Docker, K8s                      [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;0;255;102m> Core Engine:[0m   Python, FastAPI Microservices, PowerShell                        [38;2;0;255;102m│[0m
+[38;2;0;255;102m│[0m  [38;2;53;149;255m> Cloud Infra:[0m   AWS, Azure Gov, GCP, Terraform IaC, Docker, K8s                  [38;2;0;255;102m│[0m
+[38;2;0;255;102m│[0m  [38;2;0;255;102m> Core Engine:[0m   Python, FastAPI Microservices, Linux, PowerShell                 [38;2;0;255;102m│[0m
 [38;2;0;255;102m│[0m                                                                                    [38;2;0;255;102m│[0m
 [38;2;0;255;102m│[0m  [38;2;255;230;0m[1mCOMMAND & CONTROL NETWORK[0m                                                         [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;240;240;240mGitHub:[0m         [4mhttps://github.com/FreeFades2Black[0m                                [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;240;240;240mLinkedIn:[0m       [4mhttps://linkedin.com/in/william-free-hall[0m                         [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;240;240;240mOrganization:[0m   [4mhttps://github.com/For-Your-Service[0m                               [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;240;240;240mDatabricks App:[0m [2mhttps://fys-matching-app-7474643734871839.aws.databricksapps.com[0m  [38;2;0;255;102m│[0m
+[38;2;0;255;102m│[0m  [38;2;240;246;252mGitHub:[0m         [4mhttps://github.com/FreeFades2Black[0m                                [38;2;0;255;102m│[0m
+[38;2;0;255;102m│[0m  [38;2;240;246;252mLinkedIn:[0m       [4mhttps://linkedin.com/in/william-free-hall[0m                         [38;2;0;255;102m│[0m
+[38;2;0;255;102m│[0m  [38;2;240;246;252mWeb Portfolio:[0m  [4mhttps://freefades2black.github.io/freefades2black-card/[0m           [38;2;0;255;102m│[0m
+[38;2;0;255;102m│[0m  [38;2;240;246;252mEmail:[0m          whall4.wh@gmail.com                                               [38;2;0;255;102m│[0m
 [38;2;0;255;102m│[0m                                                                                    [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;120;120;120mShare:[0m [38;2;0;240;255mnpx github:FreeFades2Black/freefades2black-card[0m [38;2;120;120;120m(or --json)[0m                [38;2;0;255;102m│[0m
+[38;2;0;255;102m│[0m  [38;2;140;148;158mRun:[0m [38;2;0;240;255mnpx github:FreeFades2Black/freefades2black-card[0m [38;2;140;148;158m|[0m [38;2;0;240;255m--json[0m                     [38;2;0;255;102m│[0m
 [38;2;0;255;102m└────────────────────────────────────────────────────────────────────────────────────┘[0m
 
