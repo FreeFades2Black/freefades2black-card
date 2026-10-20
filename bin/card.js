@@ -16,8 +16,8 @@ function terminalLink(text, url) {
   return `\u001B]8;;${url}\u0007${text}\u001B]8;;\u0007`;
 }
 
-// Hosted resume asset URL (Update path if different)
-const RESUME_URL = 'https://raw.githubusercontent.com/freefades2black/freefades2black-card/main/resume.pdf';
+// Hosted resume asset URL (Served inline as application/pdf via GitHub Pages)
+const RESUME_URL = 'https://freefades2black.github.io/freefades2black-card/William_Free_Hall_Senior_Solutions_Architect_v2.pdf';
 
 const profileData = {
   handle: 'FreeFades2Black',
