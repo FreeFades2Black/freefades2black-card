@@ -1,27 +1,22 @@
 
-[38;2;0;255;102m┌────────────────────────────────────────────────────────────────────────────────────┐[0m
-[38;2;0;255;102m│[0m  [38;2;0;240;255m[1mFREEFADES2BLACK[0m [2m//[0m [38;2;255;230;0m[1mCYBERPUNK COMMAND MATRIX v1.1[0m                                  [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;140;148;158mStatus: 100% OPERATIONAL | Security Matrix: ACTIVE[0m                                [38;2;0;255;102m│[0m
-[38;2;0;255;102m├────────────────────────────────────────────────────────────────────────────────────┤[0m
-[38;2;0;255;102m│[0m                                                                                    [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;255;0;128m[1mOPERATOR PROFILE[0m                                                                  [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;240;246;252m[1mOperator:[0m     William Free Hall (Free)                                            [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;240;246;252m[1mRole:[0m         Solutions Architect & Cloud/Data Engineer                           [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;240;246;252m[1mService:[0m      18Z / 18F, US Army Special Forces (Ret.)                            [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;240;246;252m[1mAffiliation:[0m  Partner: 7 Eagle Group                                              [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;240;246;252m[1mOrganization:[0m For-Your-Service                                                    [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m                                                                                    [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;0;240;255m[1mCORE SUBSYSTEMS & STACK[0m                                                           [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;255;102;0m> Data Platform:[0m Databricks Lakehouse, Apache PySpark, Delta Lake                 [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;53;149;255m> Cloud Infra:[0m   AWS, Azure Gov, GCP, Terraform IaC, Docker, K8s                  [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;0;255;102m> Core Engine:[0m   Python, FastAPI Microservices, Linux, PowerShell                 [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m                                                                                    [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;255;230;0m[1mCOMMAND & CONTROL NETWORK[0m                                                         [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;240;246;252mGitHub:[0m         [4mhttps://github.com/FreeFades2Black[0m                                [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;240;246;252mLinkedIn:[0m       [4mhttps://linkedin.com/in/william-free-hall[0m                         [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;240;246;252mWeb Portfolio:[0m  [4mhttps://freefades2black.github.io/freefades2black-card/[0m           [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;240;246;252mEmail:[0m          whall4.wh@gmail.com                                               [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m                                                                                    [38;2;0;255;102m│[0m
-[38;2;0;255;102m│[0m  [38;2;140;148;158mRun:[0m [38;2;0;240;255mnpx github:FreeFades2Black/freefades2black-card[0m [38;2;140;148;158m|[0m [38;2;0;240;255m--json[0m                     [38;2;0;255;102m│[0m
-[38;2;0;255;102m└────────────────────────────────────────────────────────────────────────────────────┘[0m
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                                                                              │
+│   WILLIAM "FREE" HALL                                                        │
+│   Principal Cloud & AI Architect | DevSecOps Lead                            │
+│   Special Forces (Green Beret) & USMC Veteran | Oaken Sky Cloud Solutions    │
+│                                                                              │
+│   Architecting secure multi-cloud environments, zero-trust governance,       │
+│   and distributed data/AI pipelines across AWS, Azure Gov, and GCP.          │
+│                                                                              │
+│   PHONE:    (910) 584-3843                                                   │
+│   EMAIL:    whall4.wh@gmail.com                                              │
+│   LOCATION: Niceville / Destin, FL (Remote · Hybrid · On-site)               │
+│   RESUME:   ]8;;https://raw.githubusercontent.com/freefades2black/freefades2black-card/main/resume.pdfView / Download PDF]8;; (Ctrl/Cmd + click)                           │
+│   GITHUB:   ]8;;https://github.com/freefades2blackgithub.com/freefades2black]8;;                                       │
+│   LINKEDIN: ]8;;https://linkedin.com/in/freefades2blacklinkedin.com/in/freefades2black]8;;                                  │
+│                                                                              │
+│   CORE TECH: AWS | Azure Gov | GCP | Terraform | Kubernetes | Databricks |   │
+│   PySpark                                                                    │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
 

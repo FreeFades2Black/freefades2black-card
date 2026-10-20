@@ -14,8 +14,8 @@ def test_card_cli_execution():
         errors="replace",
     )
     assert res.returncode == 0
-    assert "FREEFADES2BLACK" in res.stdout
-    assert "Solutions Architect" in res.stdout
+    assert 'WILLIAM "FREE" HALL' in res.stdout
+    assert "Principal Cloud & AI Architect" in res.stdout
 
 
 def test_card_json_mode():
@@ -28,18 +28,17 @@ def test_card_json_mode():
     assert res.returncode == 0
     data = json.loads(res.stdout)
     assert data["handle"] == "FreeFades2Black"
-    assert "18Z / 18F" in data["military"]
-    assert "competencies" in data
-    assert "experience" in data
+    assert "Special Forces" in data["military"]
+    assert data["phone"] == "(910) 584-3843"
 
 
 def test_card_interactive_sections():
-    for section in ("1", "2", "4"):
+    for flag in ("--summary", "--education", "--stack"):
         res = subprocess.run(
-            ["node", CARD_BIN, "--section", section],
+            ["node", CARD_BIN, flag, "--no-interactive"],
             capture_output=True,
             encoding="utf-8",
             errors="replace",
         )
         assert res.returncode == 0
-        assert "===" in res.stdout
+        assert len(res.stdout.strip()) > 50

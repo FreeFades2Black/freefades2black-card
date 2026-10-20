@@ -1,7 +1,7 @@
 {
   "name": "@freefades2black/card",
-  "version": "1.1.0",
-  "description": "Interactive Cyberpunk Terminal Business Card & Resume Hub for FreeFades2Black",
+  "version": "1.2.0",
+  "description": "Interactive Cyberpunk Terminal Business Card & Executive Resume Hub for William 'Free' Hall",
   "main": "bin/card.js",
   "bin": {
     "freefades2black": "./bin/card.js",
@@ -10,9 +10,10 @@
   },
   "files": [
     "bin/",
+    "resume.pdf",
     "README.md"
   ],
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "start": "node bin/card.js",
     "test": "node bin/card.js --no-interactive"
@@ -40,5 +41,11 @@
   "bugs": {
     "url": "https://github.com/FreeFades2Black/freefades2black-card/issues"
   },
-  "homepage": "https://freefades2black.github.io/freefades2black-card/"
+  "homepage": "https://freefades2black.github.io/freefades2black-card/",
+  "dependencies": {
+    "boxen": "^8.0.1",
+    "chalk": "^5.3.0",
+    "inquirer": "^12.0.0",
+    "open": "^10.1.0"
+  }
 }

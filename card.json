@@ -1,76 +1,21 @@
 {
   "handle": "FreeFades2Black",
-  "name": "William Free Hall (Free)",
-  "title": "Solutions Architect & Cloud / Data Engineer",
-  "military": "18Z / 18F, US Army Special Forces (Ret.) | 23 Years Active Duty (US Army / USMC)",
-  "partner": "7 Eagle Group",
-  "organization": "For-Your-Service",
+  "name": "WILLIAM \"FREE\" HALL",
+  "title": "Principal Cloud & AI Architect | DevSecOps Lead",
+  "military": "18Z / 18F, Special Forces (Green Beret) & USMC Veteran | Oaken Sky Cloud Solutions",
+  "phone": "(910) 584-3843",
   "email": "whall4.wh@gmail.com",
-  "github": "https://github.com/FreeFades2Black",
-  "linkedin": "https://linkedin.com/in/william-free-hall",
-  "org_url": "https://github.com/For-Your-Service",
-  "web_card": "https://freefades2black.github.io/freefades2black-card/",
-  "competencies": {
-    "cloud_orchestration": [
-      "AWS",
-      "Azure Government",
-      "GCP",
-      "Docker",
-      "Kubernetes",
-      "Terraform IaC",
-      "Ansible"
-    ],
-    "data_engineering": [
-      "Databricks Lakehouse (Medallion)",
-      "Apache PySpark",
-      "Delta Lake",
-      "Python",
-      "SQL"
-    ],
-    "systems_security": [
-      "Linux (Arch / Omarchy / RHEL)",
-      "Zero-Trust CI/CD Pipelines",
-      "Automated Policy Governance"
-    ]
-  },
-  "experience": [
-    "Solutions Architect & Cloud Engineer (Oaken Sky / Enterprise Consulting): Multi-cloud automation, containerized ingestion, Medallion lakehouse pipelines, and Terraform IaC.",
-    "Special Operations Leadership (U.S. Army Special Forces 18Z/18F & USMC): 23 years active duty leading high-stakes cross-functional detachments, intelligence/communications architecture, and zero-fail mission execution."
-  ],
-  "projects": [
-    {
-      "name": "For-Your-Service",
-      "url": "https://github.com/For-Your-Service"
-    },
-    {
-      "name": "Palace Engine (SAA-C03 Cognitive SRS)",
-      "url": "https://github.com/FreeFades2Black/palace-engine"
-    },
-    {
-      "name": "Enterprise Multi-Cloud GitOps Zero-Trust",
-      "url": "https://github.com/FreeFades2Black/enterprise-multicloud-gitops-zerotrust"
-    },
-    {
-      "name": "Gunslinger's Desktop Ledger",
-      "url": "https://github.com/FreeFades2Black/gunslingers-desktop-ledger"
-    },
-    {
-      "name": "Windows Cert Manager ('The J')",
-      "url": "https://github.com/FreeFades2Black/windows_cert_manager"
-    },
-    {
-      "name": "Databricks FYS Serverless App",
-      "url": "https://fys-matching-app-7474643734871839.aws.databricksapps.com"
-    }
-  ],
-  "stack": [
-    "Databricks Lakehouse",
-    "AWS / GCP / Azure",
-    "Apache PySpark",
-    "Delta Lake",
-    "Terraform IaC",
-    "Docker / Kubernetes",
-    "Python / FastAPI",
-    "PowerShell Automation"
+  "location": "Niceville / Destin, FL (Remote · Hybrid · On-site)",
+  "resume_url": "https://raw.githubusercontent.com/freefades2black/freefades2black-card/main/resume.pdf",
+  "github": "https://github.com/freefades2black",
+  "linkedin": "https://linkedin.com/in/freefades2black",
+  "core_tech": [
+    "AWS",
+    "Azure Gov",
+    "GCP",
+    "Terraform",
+    "Kubernetes",
+    "Databricks",
+    "PySpark"
   ]
 }

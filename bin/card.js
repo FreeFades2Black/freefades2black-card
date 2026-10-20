@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-'use strict';
-
-const { execFile } = require('child_process');
-const readline = require('readline');
+import chalk from 'chalk';
+import boxen from 'boxen';
+import inquirer from 'inquirer';
+import open from 'open';
 
 if (process.stdout && typeof process.stdout.setDefaultEncoding === 'function') {
   process.stdout.setDefaultEncoding('utf8');
@@ -11,56 +11,26 @@ if (process.stdout && typeof process.stdout.setDefaultEncoding === 'function') {
 
 const args = process.argv.slice(2);
 
-// ANSI Color Codes (High-contrast legible across dark & light terminals)
-const c = {
-  reset: '\x1b[0m',
-  bold: '\x1b[1m',
-  dim: '\x1b[2m',
-  underline: '\x1b[4m',
-  neonGreen: '\x1b[38;2;0;255;102m',
-  neonCyan: '\x1b[38;2;0;240;255m',
-  neonYellow: '\x1b[38;2;255;230;0m',
-  neonMagenta: '\x1b[38;2;255;0;128m',
-  electricBlue: '\x1b[38;2;53;149;255m',
-  orange: '\x1b[38;2;255;102;0m',
-  gray: '\x1b[38;2;140;148;158m',
-  white: '\x1b[38;2;240;246;252m'
-};
+// Helper for OSC 8 clickable terminal hyperlinks
+function terminalLink(text, url) {
+  return `\u001B]8;;${url}\u0007${text}\u001B]8;;\u0007`;
+}
+
+// Hosted resume asset URL (Update path if different)
+const RESUME_URL = 'https://raw.githubusercontent.com/freefades2black/freefades2black-card/main/resume.pdf';
 
 const profileData = {
-  handle: "FreeFades2Black",
-  name: "William Free Hall (Free)",
-  title: "Solutions Architect & Cloud / Data Engineer",
-  military: "18Z / 18F, US Army Special Forces (Ret.) | 23 Years Active Duty (US Army / USMC)",
-  partner: "7 Eagle Group",
-  organization: "For-Your-Service",
-  email: "whall4.wh@gmail.com",
-  github: "https://github.com/FreeFades2Black",
-  linkedin: "https://linkedin.com/in/william-free-hall",
-  org_url: "https://github.com/For-Your-Service",
-  web_card: "https://freefades2black.github.io/freefades2black-card/",
-  competencies: {
-    cloud_orchestration: ["AWS", "Azure Government", "GCP", "Docker", "Kubernetes", "Terraform IaC", "Ansible"],
-    data_engineering: ["Databricks Lakehouse (Medallion)", "Apache PySpark", "Delta Lake", "Python", "SQL"],
-    systems_security: ["Linux (Arch / Omarchy / RHEL)", "Zero-Trust CI/CD Pipelines", "Automated Policy Governance"]
-  },
-  experience: [
-    "Solutions Architect & Cloud Engineer (Oaken Sky / Enterprise Consulting): Multi-cloud automation, containerized ingestion, Medallion lakehouse pipelines, and Terraform IaC.",
-    "Special Operations Leadership (U.S. Army Special Forces 18Z/18F & USMC): 23 years active duty leading high-stakes cross-functional detachments, intelligence/communications architecture, and zero-fail mission execution."
-  ],
-  projects: [
-    { name: "For-Your-Service", url: "https://github.com/For-Your-Service" },
-    { name: "Palace Engine (SAA-C03 Cognitive SRS)", url: "https://github.com/FreeFades2Black/palace-engine" },
-    { name: "Enterprise Multi-Cloud GitOps Zero-Trust", url: "https://github.com/FreeFades2Black/enterprise-multicloud-gitops-zerotrust" },
-    { name: "Gunslinger's Desktop Ledger", url: "https://github.com/FreeFades2Black/gunslingers-desktop-ledger" },
-    { name: "Windows Cert Manager ('The J')", url: "https://github.com/FreeFades2Black/windows_cert_manager" },
-    { name: "Databricks FYS Serverless App", url: "https://fys-matching-app-7474643734871839.aws.databricksapps.com" }
-  ],
-  stack: [
-    "Databricks Lakehouse", "AWS / GCP / Azure", "Apache PySpark",
-    "Delta Lake", "Terraform IaC", "Docker / Kubernetes",
-    "Python / FastAPI", "PowerShell Automation"
-  ]
+  handle: 'FreeFades2Black',
+  name: 'WILLIAM "FREE" HALL',
+  title: 'Principal Cloud & AI Architect | DevSecOps Lead',
+  military: '18Z / 18F, Special Forces (Green Beret) & USMC Veteran | Oaken Sky Cloud Solutions',
+  phone: '(910) 584-3843',
+  email: 'whall4.wh@gmail.com',
+  location: 'Niceville / Destin, FL (Remote · Hybrid · On-site)',
+  resume_url: RESUME_URL,
+  github: 'https://github.com/freefades2black',
+  linkedin: 'https://linkedin.com/in/freefades2black',
+  core_tech: ['AWS', 'Azure Gov', 'GCP', 'Terraform', 'Kubernetes', 'Databricks', 'PySpark']
 };
 
 if (args.includes('--json')) {
@@ -68,201 +38,174 @@ if (args.includes('--json')) {
   process.exit(0);
 }
 
-if (args.includes('--help') || args.includes('-h')) {
-  console.log(`
-${c.neonCyan}${c.bold}Usage:${c.reset}
-  npx github:FreeFades2Black/freefades2black-card [options]
-  npx @freefades2black/card [options]
+function clearScreen() {
+  if (process.stdout.isTTY && !args.includes('--no-interactive')) {
+    process.stdout.write('\x1Bc');
+  }
+}
 
-${c.neonGreen}${c.bold}Options:${c.reset}
-  --json             Output operator profile & architecture portfolio as JSON
-  --section <1-4>    Print a specific resume section non-interactively
-  --no-interactive   Render the card and exit immediately without interactive menu
-  --help, -h         Show this help message
-`);
+function renderHeaderCard() {
+  const content = [
+    `${chalk.bold.white('WILLIAM "FREE" HALL')}`,
+    `${chalk.cyan.bold('Principal Cloud & AI Architect | DevSecOps Lead')}`,
+    `${chalk.dim('Special Forces (Green Beret) & USMC Veteran | Oaken Sky Cloud Solutions')}`,
+    '',
+    `${chalk.white('Architecting secure multi-cloud environments, zero-trust governance,')}`,
+    `${chalk.white('and distributed data/AI pipelines across AWS, Azure Gov, and GCP.')}`,
+    '',
+    `${chalk.bold.gray('PHONE:')}    (910) 584-3843`,
+    `${chalk.bold.gray('EMAIL:')}    whall4.wh@gmail.com`,
+    `${chalk.bold.gray('LOCATION:')} Niceville / Destin, FL (Remote · Hybrid · On-site)`,
+    `${chalk.bold.gray('RESUME:')}   ${chalk.green(terminalLink('View / Download PDF', RESUME_URL))} ${chalk.dim('(Ctrl/Cmd + click)')}`,
+    `${chalk.bold.gray('GITHUB:')}   ${terminalLink('github.com/freefades2black', 'https://github.com/freefades2black')}`,
+    `${chalk.bold.gray('LINKEDIN:')} ${terminalLink('linkedin.com/in/freefades2black', 'https://linkedin.com/in/freefades2black')}`,
+    '',
+    `${chalk.bold.gray('CORE TECH:')} AWS | Azure Gov | GCP | Terraform | Kubernetes | Databricks | PySpark`
+  ].join('\n');
+
+  console.log(boxen(content, {
+    padding: 1,
+    margin: { top: 1, bottom: 1, left: 1, right: 1 },
+    borderStyle: 'single',
+    borderColor: 'gray'
+  }));
+}
+
+function displayExecutiveSummary() {
+  clearScreen();
+  console.log(boxen(
+    `${chalk.bold.cyan('EXECUTIVE PROFILE & METHODOLOGY')}\n\n` +
+    `${chalk.bold.white('Bridging 20+ Years Elite Military Operations & Enterprise Cloud Transformation')}\n\n` +
+    `• ${chalk.bold('Architectural Governance:')} Multi-cloud landing zones across AWS, Azure Gov, and GCP; eliminating configuration drift and minimizing blast radius.\n` +
+    `• ${chalk.bold('DevSecOps & Zero-Trust:')} Automated IAM boundaries, secret management, container security gates, and policy-as-code enforcement.\n` +
+    `• ${chalk.bold('Distributed Data & ML Systems:')} High-throughput PySpark pipelines, Databricks Medallion frameworks, and containerized ingestion engines.\n` +
+    `• ${chalk.bold('Command Leadership:')} High-pressure decision-making, executive risk communication, and technical mentoring rooted in operational excellence.\n` +
+    `• ${chalk.bold('Flagship Project:')} Architect of "For Your Service" — an open-source tensor matching system integrating Google Cloud Identity controls via Terraform and PySpark analytics.`,
+    { padding: 1, borderStyle: 'round', borderColor: 'cyan' }
+  ));
+}
+
+function displayEducationAndCredentials() {
+  clearScreen();
+  console.log(boxen(
+    `${chalk.bold.cyan('ACADEMIC CREDENTIALS & SPECIALIZED TRAINING')}\n\n` +
+    `🎓 ${chalk.bold.white('American Military University')} (2020 – 2022)\n` +
+    `   ${chalk.dim('Bachelor of Science (BS) in Cybersecurity')}\n` +
+    `   Focus: Cyber defense operations, digital forensics, incident investigations, network topologies.\n\n` +
+    `🎓 ${chalk.bold.white('Syracuse University — Onward to Opportunity')} (2022 – 2023)\n` +
+    `   ${chalk.dim('Network Security Program | Grade: 4.0')}\n` +
+    `   Focus: Cyber/electronic warfare operations, network security policies, IaC automation.\n\n` +
+    `🎓 ${chalk.bold.white('Northwest Florida State College')} (2018 – 2020)\n` +
+    `   ${chalk.dim('Associate of Arts (AA) in Computer Programming')}\n` +
+    `   Focus: Software architecture, data structures, Python, Java, C++, C#.\n\n` +
+    `📜 ${chalk.bold.white('SkillStorm Enterprise Cloud Apprenticeship')} (2023)\n` +
+    `   ${chalk.dim('AWS Cloud Architect Program')}\n` +
+    `   Focus: Fault-tolerant architectures, automated migration strategies, security compliance.\n\n` +
+    `🛡️  ${chalk.bold.white('Active Certifications & Credentials:')}\n` +
+    `   • AWS Certified Cloud Practitioner\n` +
+    `   • Microsoft Certified: Azure Fundamentals (AZ-900)\n` +
+    `   • U.S. Department of Labor Cloud Engineer Apprenticeship Certification`,
+    { padding: 1, borderStyle: 'round', borderColor: 'cyan' }
+  ));
+}
+
+function displayTechnicalStack() {
+  clearScreen();
+  console.log(boxen(
+    `${chalk.bold.cyan('TECHNICAL STACK & CAPABILITIES')}\n\n` +
+    `• ${chalk.bold.white('Cloud Platforms:')}    AWS (Commercial & GovCloud), Microsoft Azure, Google Cloud Platform (GCP)\n` +
+    `• ${chalk.bold.white('IaC & Automation:')}   Terraform, Ansible, Docker, Kubernetes, GitHub Actions, HashiCorp Vault\n` +
+    `• ${chalk.bold.white('Data & AI Systems:')}  Databricks, PySpark, Python, Hugging Face, Data Modeling, Medallion Arch\n` +
+    `• ${chalk.bold.white('Security & Systems:')} Linux (RHEL, Ubuntu, Arch), Zero-Trust IAM, Policy-as-Code (Checkov), CI/CD telemetry`,
+    { padding: 1, borderStyle: 'round', borderColor: 'cyan' }
+  ));
+}
+
+if (args.includes('--summary')) {
+  displayExecutiveSummary();
+  process.exit(0);
+}
+if (args.includes('--education')) {
+  displayEducationAndCredentials();
+  process.exit(0);
+}
+if (args.includes('--stack')) {
+  displayTechnicalStack();
   process.exit(0);
 }
 
-function getVisibleLength(str) {
-  return str.replace(/\x1b\[[0-9;]*m/g, '').length;
-}
+async function runInteractiveMenu() {
+  clearScreen();
+  renderHeaderCard();
 
-const BOX_WIDTH = 80;
+  if (!process.stdin.isTTY || !process.stdout.isTTY || args.includes('--no-interactive') || process.env.CI) {
+    return;
+  }
 
-function createRow(content) {
-  const visibleLen = getVisibleLength(content);
-  const pad = Math.max(0, BOX_WIDTH - visibleLen);
-  return `${c.neonGreen}│${c.reset}  ${content}${' '.repeat(pad)}  ${c.neonGreen}│${c.reset}`;
-}
-
-function renderCard() {
-  const lines = [
-    `${c.neonCyan}${c.bold}FREEFADES2BLACK${c.reset} ${c.dim}//${c.reset} ${c.neonYellow}${c.bold}CYBERPUNK COMMAND MATRIX v1.1${c.reset}`,
-    `${c.gray}Status: 100% OPERATIONAL | Security Matrix: ACTIVE${c.reset}`,
-    `---DIVIDER---`,
-    ``,
-    `${c.neonMagenta}${c.bold}OPERATOR PROFILE${c.reset}`,
-    `${c.white}${c.bold}Operator:${c.reset}     William Free Hall (Free)`,
-    `${c.white}${c.bold}Role:${c.reset}         Solutions Architect & Cloud/Data Engineer`,
-    `${c.white}${c.bold}Service:${c.reset}      18Z / 18F, US Army Special Forces (Ret.)`,
-    `${c.white}${c.bold}Affiliation:${c.reset}  Partner: 7 Eagle Group`,
-    `${c.white}${c.bold}Organization:${c.reset} For-Your-Service`,
-    ``,
-    `${c.neonCyan}${c.bold}CORE SUBSYSTEMS & STACK${c.reset}`,
-    `${c.orange}> Data Platform:${c.reset} Databricks Lakehouse, Apache PySpark, Delta Lake`,
-    `${c.electricBlue}> Cloud Infra:${c.reset}   AWS, Azure Gov, GCP, Terraform IaC, Docker, K8s`,
-    `${c.neonGreen}> Core Engine:${c.reset}   Python, FastAPI Microservices, Linux, PowerShell`,
-    ``,
-    `${c.neonYellow}${c.bold}COMMAND & CONTROL NETWORK${c.reset}`,
-    `${c.white}GitHub:${c.reset}         ${c.underline}https://github.com/FreeFades2Black${c.reset}`,
-    `${c.white}LinkedIn:${c.reset}       ${c.underline}https://linkedin.com/in/william-free-hall${c.reset}`,
-    `${c.white}Web Portfolio:${c.reset}  ${c.underline}https://freefades2black.github.io/freefades2black-card/${c.reset}`,
-    `${c.white}Email:${c.reset}          whall4.wh@gmail.com`,
-    ``,
-    `${c.gray}Run:${c.reset} ${c.neonCyan}npx github:FreeFades2Black/freefades2black-card${c.reset} ${c.gray}|${c.reset} ${c.neonCyan}--json${c.reset}`
-  ];
-
-  const topBorder = `${c.neonGreen}┌${'─'.repeat(BOX_WIDTH + 4)}┐${c.reset}`;
-  const divider = `${c.neonGreen}├${'─'.repeat(BOX_WIDTH + 4)}┤${c.reset}`;
-  const bottomBorder = `${c.neonGreen}└${'─'.repeat(BOX_WIDTH + 4)}┘${c.reset}`;
-
-  console.log('');
-  console.log(topBorder);
-  for (const line of lines) {
-    if (line === '---DIVIDER---') {
-      console.log(divider);
-    } else {
-      console.log(createRow(line));
+  const { selection } = await inquirer.prompt([
+    {
+      type: 'list',
+      name: 'selection',
+      message: 'Explore profile details or select an action:',
+      pageSize: 8,
+      choices: [
+        { name: '📄 Open Resume (PDF in Browser)', value: 'resume' },
+        { name: '🎖️  View Executive Summary & Core Pillars', value: 'summary' },
+        { name: '🎓 View Education & Credentials', value: 'education' },
+        { name: '⚙️  View Complete Technical Stack', value: 'stack' },
+        { name: '💻 Launch GitHub Portfolio', value: 'github' },
+        { name: '🔗 Open LinkedIn Profile', value: 'linkedin' },
+        { name: '📧 Compose Email to Free', value: 'email' },
+        { name: '🚪 Exit', value: 'exit' }
+      ]
     }
-  }
-  console.log(bottomBorder);
-  console.log('');
-}
+  ]);
 
-function openUrl(url) {
-  const platform = process.platform;
-  if (platform === 'win32') {
-    execFile('cmd', ['/c', 'start', '', url], () => {});
-  } else if (platform === 'darwin') {
-    execFile('open', [url], () => {});
-  } else {
-    execFile('xdg-open', [url], () => {});
-  }
-}
-
-function printSection(choiceIndex) {
-  console.log('');
-  if (choiceIndex === 0) {
-    console.log(`${c.neonCyan}${c.bold}=== [1] CORE COMPETENCIES & CLOUD ARCHITECTURE ===${c.reset}`);
-    console.log(`${c.orange}• Cloud & Orchestration:${c.reset} AWS, Azure Government, GCP, Docker, Kubernetes, Terraform, Ansible`);
-    console.log(`${c.electricBlue}• Data Engineering:${c.reset}      PySpark, Python, Databricks Medallion Lakehouse, Delta Lake`);
-    console.log(`${c.neonGreen}• Systems & Security:${c.reset}    Linux (Arch/RHEL), CI/CD Telemetry, Automated Policy Governance`);
-  } else if (choiceIndex === 1) {
-    console.log(`${c.neonMagenta}${c.bold}=== [2] EXPERIENCE & LEADERSHIP HISTORY ===${c.reset}`);
-    console.log(`${c.white}${c.bold}• Solutions Architect & Cloud Engineer (Oaken Sky / Enterprise Consulting):${c.reset}`);
-    console.log(`  Multi-cloud automation, event-driven pipeline architecture, containerized ingestion, and IaC design.`);
-    console.log(`${c.white}${c.bold}• Special Operations Leadership (U.S. Army Special Forces 18Z/18F & USMC):${c.reset}`);
-    console.log(`  23 years of active duty leading high-stakes detachments, managing complex intelligence & communications`);
-    console.log(`  architectures, and translating mission objectives into resilient deployments under zero-fail constraints.`);
-  } else if (choiceIndex === 2) {
-    console.log(`${c.neonYellow}${c.bold}=== [3] LIVE PROJECTS & GITHUB REPOSITORIES ===${c.reset}`);
-    for (const p of profileData.projects) {
-      console.log(`  ${c.neonGreen}▸${c.reset} ${c.bold}${p.name}:${c.reset} ${c.underline}${p.url}${c.reset}`);
-    }
-    console.log(`${c.gray}  [Opening GitHub Profile in default browser...]${c.reset}`);
-    openUrl(profileData.github);
-  } else if (choiceIndex === 3) {
-    console.log(`${c.neonCyan}${c.bold}=== [4] CERTIFICATIONS, CREDENTIALS & CLEARANCE ===${c.reset}`);
-    console.log(`  • AWS Certified Solutions Architect (SAA-C03 Architecture Track)`);
-    console.log(`  • Databricks Lakehouse & PySpark Data Engineering`);
-    console.log(`  • U.S. Army Special Forces Operations & Intelligence Sergeant (18Z / 18F)`);
-  } else if (choiceIndex === 4) {
-    console.log(`${c.neonGreen}[✓] Launching Interactive Web Portfolio:${c.reset} ${c.underline}${profileData.web_card}${c.reset}`);
-    openUrl(profileData.web_card);
-  } else if (choiceIndex === 5) {
-    console.log(`${c.neonCyan}[✓] Direct Contact & LinkedIn:${c.reset}`);
-    console.log(`  • LinkedIn: ${c.underline}${profileData.linkedin}${c.reset}`);
-    console.log(`  • Email:    ${c.underline}mailto:${profileData.email}${c.reset}`);
-    openUrl(profileData.linkedin);
-  }
-  console.log('');
-}
-
-const sectionIdx = args.indexOf('--section');
-if (sectionIdx !== -1 && args[sectionIdx + 1]) {
-  const num = parseInt(args[sectionIdx + 1], 10);
-  if (num >= 1 && num <= 6) {
-    printSection(num - 1);
-    process.exit(0);
-  }
-}
-
-renderCard();
-
-const shouldRunMenu =
-  process.stdin.isTTY &&
-  process.stdout.isTTY &&
-  !args.includes('--no-interactive') &&
-  !process.env.CI;
-
-if (!shouldRunMenu) {
-  process.exit(0);
-}
-
-const menuItems = [
-  '1. Core Competencies & Cloud Architecture',
-  '2. Experience & Leadership History',
-  '3. Live Projects & GitHub Repos (Open Browser)',
-  '4. Certifications & Credentials',
-  '5. Open Interactive Web Portfolio (Open Browser)',
-  '6. Direct Contact & LinkedIn (Open Browser)',
-  '0. Exit'
-];
-
-let selected = 0;
-
-function drawMenu(firstDraw = false) {
-  if (!firstDraw) {
-    process.stdout.write(`\x1b[${menuItems.length + 1}A`);
-  }
-  console.log(`${c.neonCyan}${c.bold}?${c.reset} ${c.bold}What would you like to explore?${c.reset} ${c.gray}(Use ↑/↓ arrows or keys 1-6, Enter to select, 0/q to exit)${c.reset}`);
-  menuItems.forEach((item, idx) => {
-    const isSel = idx === selected;
-    const prefix = isSel ? `${c.neonGreen}❯ ` : '  ';
-    const text = isSel ? `${c.neonGreen}${c.bold}${item}${c.reset}` : `${c.white}${item}${c.reset}`;
-    process.stdout.write(`\x1b[2K${prefix}${text}\n`);
-  });
-}
-
-readline.emitKeypressEvents(process.stdin);
-process.stdin.setRawMode(true);
-drawMenu(true);
-
-process.stdin.on('keypress', (str, key) => {
-  if (!key) return;
-  if ((key.ctrl && key.name === 'c') || key.name === 'q' || str === '0') {
-    process.stdin.setRawMode(false);
-    console.log(`\n${c.gray}Connection closed. Stay frosty.${c.reset}`);
-    process.exit(0);
-  }
-  if (key.name === 'up') {
-    selected = (selected - 1 + menuItems.length) % menuItems.length;
-    drawMenu(false);
-  } else if (key.name === 'down') {
-    selected = (selected + 1) % menuItems.length;
-    drawMenu(false);
-  } else if (['1', '2', '3', '4', '5', '6'].includes(str)) {
-    selected = parseInt(str, 10) - 1;
-    drawMenu(false);
-    printSection(selected);
-    drawMenu(true);
-  } else if (key.name === 'return' || key.name === 'enter') {
-    if (selected === menuItems.length - 1) {
-      process.stdin.setRawMode(false);
-      console.log(`\n${c.gray}Connection closed. Stay frosty.${c.reset}`);
+  switch (selection) {
+    case 'resume':
+      console.log(chalk.dim('\nOpening resume in default browser...'));
+      await open(RESUME_URL);
+      await pausePrompt();
+      break;
+    case 'summary':
+      displayExecutiveSummary();
+      await pausePrompt();
+      break;
+    case 'education':
+      displayEducationAndCredentials();
+      await pausePrompt();
+      break;
+    case 'stack':
+      displayTechnicalStack();
+      await pausePrompt();
+      break;
+    case 'github':
+      await open('https://github.com/freefades2black');
+      await pausePrompt();
+      break;
+    case 'linkedin':
+      await open('https://linkedin.com/in/freefades2black');
+      await pausePrompt();
+      break;
+    case 'email':
+      await open('mailto:whall4.wh@gmail.com');
+      await pausePrompt();
+      break;
+    case 'exit':
+      clearScreen();
       process.exit(0);
-    }
-    printSection(selected);
-    drawMenu(true);
   }
-});
+}
+
+async function pausePrompt() {
+  await inquirer.prompt([
+    {
+      type: 'input',
+      name: 'back',
+      message: chalk.dim('\nPress Enter to return to main menu...')
+    }
+  ]);
+  return runInteractiveMenu();
+}
+
+runInteractiveMenu();
