@@ -1,0 +1,11 @@
+.git/
+.github/
+.pytest_cache/
+__pycache__/
+docs/
+observability/
+operations/
+tests/
+index.html
+card.ans
+card.json

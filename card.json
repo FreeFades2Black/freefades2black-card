@@ -1,0 +1,44 @@
+{
+  "handle": "FreeFades2Black",
+  "name": "William Free Hall (Free)",
+  "title": "Solutions Architect & Cloud / Data Engineer",
+  "military": "18Z / 18F, US Army Special Forces (Ret.)",
+  "partner": "7 Eagle Group",
+  "organization": "For-Your-Service",
+  "github": "https://github.com/FreeFades2Black",
+  "linkedin": "https://linkedin.com/in/william-free-hall",
+  "org_url": "https://github.com/For-Your-Service",
+  "web_card": "https://freefades2black.github.io/freefades2black-card/",
+  "projects": [
+    {
+      "name": "For-Your-Service",
+      "url": "https://github.com/For-Your-Service"
+    },
+    {
+      "name": "Palace Engine (SAA-C03 Cognitive SRS)",
+      "url": "https://github.com/FreeFades2Black/palace-engine"
+    },
+    {
+      "name": "Gunslinger's Desktop Ledger",
+      "url": "https://github.com/FreeFades2Black/gunslingers-desktop-ledger"
+    },
+    {
+      "name": "Windows Cert Manager ('The J')",
+      "url": "https://github.com/FreeFades2Black/windows_cert_manager"
+    },
+    {
+      "name": "Databricks FYS Serverless App",
+      "url": "https://fys-matching-app-7474643734871839.aws.databricksapps.com"
+    }
+  ],
+  "stack": [
+    "Databricks Lakehouse",
+    "AWS / GCP / Azure",
+    "Apache PySpark",
+    "Delta Lake",
+    "Terraform IaC",
+    "Docker / Kubernetes",
+    "Python / FastAPI",
+    "PowerShell Automation"
+  ]
+}

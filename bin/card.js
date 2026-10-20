@@ -2,6 +2,10 @@
 
 'use strict';
 
+if (process.stdout && typeof process.stdout.setDefaultEncoding === 'function') {
+  process.stdout.setDefaultEncoding('utf8');
+}
+
 const args = process.argv.slice(2);
 
 // ANSI Color Codes
@@ -24,14 +28,18 @@ const c = {
 
 const profileData = {
   handle: "FreeFades2Black",
+  name: "William Free Hall (Free)",
   title: "Solutions Architect & Cloud / Data Engineer",
   military: "18Z / 18F, US Army Special Forces (Ret.)",
   partner: "7 Eagle Group",
   organization: "For-Your-Service",
   github: "https://github.com/FreeFades2Black",
+  linkedin: "https://linkedin.com/in/william-free-hall",
   org_url: "https://github.com/For-Your-Service",
+  web_card: "https://freefades2black.github.io/freefades2black-card/",
   projects: [
     { name: "For-Your-Service", url: "https://github.com/For-Your-Service" },
+    { name: "Palace Engine (SAA-C03 Cognitive SRS)", url: "https://github.com/FreeFades2Black/palace-engine" },
     { name: "Gunslinger's Desktop Ledger", url: "https://github.com/FreeFades2Black/gunslingers-desktop-ledger" },
     { name: "Windows Cert Manager ('The J')", url: "https://github.com/FreeFades2Black/windows_cert_manager" },
     { name: "Databricks FYS Serverless App", url: "https://fys-matching-app-7474643734871839.aws.databricksapps.com" }
@@ -51,7 +59,7 @@ if (args.includes('--json')) {
 if (args.includes('--help') || args.includes('-h')) {
   console.log(`
 ${c.neonCyan}${c.bold}Usage:${c.reset}
-  npx @freefades2black/card [options]
+  npx github:FreeFades2Black/freefades2black-card [options]
 
 ${c.neonGreen}${c.bold}Options:${c.reset}
   --json     Output profile details as JSON
@@ -79,6 +87,7 @@ const lines = [
   `---DIVIDER---`,
   ``,
   `${c.neonMagenta}${c.bold}OPERATOR PROFILE${c.reset}`,
+  `${c.white}${c.bold}Operator:${c.reset}     William Free Hall (Free)`,
   `${c.white}${c.bold}Role:${c.reset}         Solutions Architect & Cloud/Data Engineer`,
   `${c.white}${c.bold}Service:${c.reset}      18Z / 18F, US Army Special Forces (Ret.)`,
   `${c.white}${c.bold}Affiliation:${c.reset}  Partner: 7 Eagle Group`,
@@ -91,10 +100,11 @@ const lines = [
   ``,
   `${c.neonYellow}${c.bold}COMMAND & CONTROL NETWORK${c.reset}`,
   `${c.white}GitHub:${c.reset}         ${c.underline}https://github.com/FreeFades2Black${c.reset}`,
+  `${c.white}LinkedIn:${c.reset}       ${c.underline}https://linkedin.com/in/william-free-hall${c.reset}`,
   `${c.white}Organization:${c.reset}   ${c.underline}https://github.com/For-Your-Service${c.reset}`,
   `${c.white}Databricks App:${c.reset} ${c.dim}https://fys-matching-app-7474643734871839.aws.databricksapps.com${c.reset}`,
   ``,
-  `${c.gray}Run:${c.reset} ${c.neonCyan}npx @freefades2black/card${c.reset}  ${c.gray}| JSON:${c.reset} ${c.neonCyan}npx @freefades2black/card --json${c.reset}`
+  `${c.gray}Share:${c.reset} ${c.neonCyan}npx github:FreeFades2Black/freefades2black-card${c.reset} ${c.gray}(or --json)${c.reset}`
 ];
 
 const topBorder = `${c.neonGreen}┌${'─'.repeat(BOX_WIDTH + 4)}┐${c.reset}`;

@@ -1,12 +1,17 @@
 {
   "name": "@freefades2black/card",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Interactive Cyberpunk Terminal Business Card for FreeFades2Black",
   "main": "bin/card.js",
   "bin": {
     "freefades2black": "./bin/card.js",
+    "freefades2black-card": "./bin/card.js",
     "card": "./bin/card.js"
   },
+  "files": [
+    "bin/",
+    "README.md"
+  ],
   "type": "commonjs",
   "scripts": {
     "start": "node bin/card.js",
@@ -33,5 +38,5 @@
   "bugs": {
     "url": "https://github.com/FreeFades2Black/freefades2black-card/issues"
   },
-  "homepage": "https://github.com/FreeFades2Black"
+  "homepage": "https://freefades2black.github.io/freefades2black-card/"
 }

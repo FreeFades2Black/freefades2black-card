@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreeFades2Black // Cyberpunk Terminal Business Card</title>
+  <style>
+    :root {
+      --bg: #080b10;
+      --panel: #0d121a;
+      --border: #00ff66;
+      --cyan: #00f0ff;
+      --yellow: #ffe600;
+      --magenta: #ff0080;
+      --orange: #ff6600;
+      --blue: #3595ff;
+      --gray: #8b949e;
+      --white: #f0f6fc;
+    }
+    * { box-sizing: border-box; }
+    body {
+      background: radial-gradient(circle at top, #101926 0%, var(--bg) 70%);
+      color: var(--white);
+      font-family: "JetBrains Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+      margin: 0;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container {
+      width: 100%;
+      max-width: 880px;
+    }
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .tabs button, .share-bar button {
+      background: #131b26;
+      color: var(--cyan);
+      border: 1px solid #1f2d3d;
+      padding: 0.5rem 0.9rem;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .tabs button.active, .tabs button:hover, .share-bar button:hover {
+      border-color: var(--border);
+      color: var(--border);
+      box-shadow: 0 0 12px rgba(0, 255, 102, 0.25);
+    }
+    .terminal {
+      background: var(--panel);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      box-shadow: 0 0 28px rgba(0, 255, 102, 0.15);
+      overflow: hidden;
+    }
+    .terminal-header {
+      background: #131a24;
+      border-bottom: 1px solid rgba(0, 255, 102, 0.35);
+      padding: 0.65rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--gray);
+    }
+    .dots span {
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+    .dot-r { background: #ff5f56; }
+    .dot-y { background: #ffbd2e; }
+    .dot-g { background: #27c93f; }
+    .terminal-body {
+      padding: 1.5rem 1.75rem;
+      line-height: 1.65;
+      font-size: 0.95rem;
+      overflow-x: auto;
+    }
+    .divider {
+      border: 0;
+      border-top: 1px solid rgba(0, 255, 102, 0.45);
+      margin: 1rem 0;
+    }
+    .cyan { color: var(--cyan); font-weight: 700; }
+    .yellow { color: var(--yellow); font-weight: 700; }
+    .magenta { color: var(--magenta); font-weight: 700; }
+    .green { color: var(--border); font-weight: 700; }
+    .orange { color: var(--orange); font-weight: 700; }
+    .blue { color: var(--blue); font-weight: 700; }
+    .gray { color: var(--gray); }
+    .row { display: grid; grid-template-columns: 150px 1fr; gap: 0.5rem; margin: 0.2rem 0; }
+    @media (max-width: 600px) {
+      .row { grid-template-columns: 1fr; gap: 0.1rem; margin-bottom: 0.5rem; }
+    }
+    a { color: var(--cyan); text-decoration: underline; }
+    a:hover { color: var(--border); }
+    pre { margin: 0; color: var(--border); font-size: 0.88rem; }
+    .share-card {
+      margin-top: 1.25rem;
+      background: #0d121a;
+      border: 1px solid #1f2d3d;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+    }
+    .cmd-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      background: #070a0e;
+      border: 1px solid #1c2633;
+      padding: 0.55rem 0.85rem;
+      border-radius: 6px;
+      margin: 0.5rem 0;
+      font-size: 0.85rem;
+      overflow-x: auto;
+    }
+    .cmd-row code { color: var(--cyan); white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="toolbar">
+      <div class="tabs">
+        <button id="btn-card" class="active" onclick="showTab('card')">Terminal Card</button>
+        <button id="btn-json" onclick="showTab('json')">--json Output</button>
+      </div>
+      <div class="share-bar">
+        <button onclick="copyText('https://freefades2black.github.io/freefades2black-card/', this)">Copy Web Card URL</button>
+      </div>
+    </div>
+
+    <div class="terminal">
+      <div class="terminal-header">
+        <div class="dots">
+          <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+        </div>
+        <div id="prompt-title">npx github:FreeFades2Black/freefades2black-card</div>
+        <div>UTF-8 // ZERO-DEP</div>
+      </div>
+
+      <div id="view-card" class="terminal-body">
+        <div><span class="cyan">FREEFADES2BLACK</span> <span class="gray">//</span> <span class="yellow">CYBERPUNK COMMAND MATRIX v1.0</span></div>
+        <div class="gray">Status: 100% OPERATIONAL | Security Matrix: ACTIVE</div>
+        <hr class="divider" />
+
+        <div class="magenta" style="margin-bottom:0.4rem;">OPERATOR PROFILE</div>
+        <div class="row"><strong>Operator:</strong> <span>William Free Hall (Free)</span></div>
+        <div class="row"><strong>Role:</strong> <span>Solutions Architect &amp; Cloud/Data Engineer</span></div>
+        <div class="row"><strong>Service:</strong> <span>18Z / 18F, US Army Special Forces (Ret.)</span></div>
+        <div class="row"><strong>Affiliation:</strong> <span>Partner: 7 Eagle Group</span></div>
+        <div class="row"><strong>Organization:</strong> <span>For-Your-Service</span></div>
+
+        <div class="cyan" style="margin:1rem 0 0.4rem;">CORE SUBSYSTEMS &amp; STACK</div>
+        <div><span class="orange">&gt; Data Platform:</span> Databricks Lakehouse, Apache PySpark, Delta Lake</div>
+        <div><span class="blue">&gt; Cloud Infra:</span>   AWS, GCP, Azure, Terraform IaC, Docker, K8s</div>
+        <div><span class="green">&gt; Core Engine:</span>   Python, FastAPI Microservices, PowerShell</div>
+
+        <div class="yellow" style="margin:1rem 0 0.4rem;">COMMAND &amp; CONTROL NETWORK</div>
+        <div class="row"><strong>GitHub:</strong> <a href="https://github.com/FreeFades2Black" target="_blank" rel="noopener">https://github.com/FreeFades2Black</a></div>
+        <div class="row"><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/william-free-hall" target="_blank" rel="noopener">https://linkedin.com/in/william-free-hall</a></div>
+        <div class="row"><strong>Organization:</strong> <a href="https://github.com/For-Your-Service" target="_blank" rel="noopener">https://github.com/For-Your-Service</a></div>
+        <div class="row"><strong>Palace Engine:</strong> <a href="https://github.com/FreeFades2Black/palace-engine" target="_blank" rel="noopener">https://github.com/FreeFades2Black/palace-engine</a></div>
+        <div class="row"><strong>Databricks App:</strong> <a href="https://fys-matching-app-7474643734871839.aws.databricksapps.com" target="_blank" rel="noopener">https://fys-matching-app-7474643734871839.aws.databricksapps.com</a></div>
+      </div>
+
+      <div id="view-json" class="terminal-body" style="display:none;">
+        <pre id="json-box"></pre>
+      </div>
+    </div>
+
+    <div class="share-card">
+      <div class="cyan" style="margin-bottom:0.5rem;">RUN IN ANY TERMINAL (ZERO AUTH / ZERO CONFIG)</div>
+      <div class="cmd-row">
+        <code>npx github:FreeFades2Black/freefades2black-card</code>
+        <button class="tabs" onclick="copyText('npx github:FreeFades2Black/freefades2black-card', this)" style="background:#131b26;color:#00ff66;border:1px solid #00ff66;padding:0.3rem 0.7rem;border-radius:4px;cursor:pointer;">Copy</button>
+      </div>
+      <div class="cmd-row">
+        <code>curl -sL https://freefades2black.github.io/freefades2black-card/card.ans</code>
+        <button onclick="copyText('curl -sL https://freefades2black.github.io/freefades2black-card/card.ans', this)" style="background:#131b26;color:#00ff66;border:1px solid #00ff66;padding:0.3rem 0.7rem;border-radius:4px;cursor:pointer;">Copy</button>
+      </div>
+      <div class="cmd-row">
+        <code>irm https://freefades2black.github.io/freefades2black-card/card.ans</code>
+        <button onclick="copyText('irm https://freefades2black.github.io/freefades2black-card/card.ans', this)" style="background:#131b26;color:#00ff66;border:1px solid #00ff66;padding:0.3rem 0.7rem;border-radius:4px;cursor:pointer;">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const profileJson = {
+      handle: "FreeFades2Black",
+      name: "William Free Hall (Free)",
+      title: "Solutions Architect & Cloud / Data Engineer",
+      military: "18Z / 18F, US Army Special Forces (Ret.)",
+      partner: "7 Eagle Group",
+      organization: "For-Your-Service",
+      github: "https://github.com/FreeFades2Black",
+      linkedin: "https://linkedin.com/in/william-free-hall",
+      org_url: "https://github.com/For-Your-Service",
+      web_card: "https://freefades2black.github.io/freefades2black-card/",
+      projects: [
+        { name: "For-Your-Service", url: "https://github.com/For-Your-Service" },
+        { name: "Palace Engine (SAA-C03 Cognitive SRS)", url: "https://github.com/FreeFades2Black/palace-engine" },
+        { name: "Gunslinger's Desktop Ledger", url: "https://github.com/FreeFades2Black/gunslingers-desktop-ledger" },
+        { name: "Windows Cert Manager ('The J')", url: "https://github.com/FreeFades2Black/windows_cert_manager" },
+        { name: "Databricks FYS Serverless App", url: "https://fys-matching-app-7474643734871839.aws.databricksapps.com" }
+      ],
+      stack: [
+        "Databricks Lakehouse", "AWS / GCP / Azure", "Apache PySpark",
+        "Delta Lake", "Terraform IaC", "Docker / Kubernetes",
+        "Python / FastAPI", "PowerShell Automation"
+      ]
+    };
+    document.getElementById('json-box').textContent = JSON.stringify(profileJson, null, 2);
+
+    function showTab(mode) {
+      const isCard = mode === 'card';
+      document.getElementById('view-card').style.display = isCard ? 'block' : 'none';
+      document.getElementById('view-json').style.display = isCard ? 'none' : 'block';
+      document.getElementById('btn-card').className = isCard ? 'active' : '';
+      document.getElementById('btn-json').className = isCard ? '' : 'active';
+      document.getElementById('prompt-title').textContent = isCard
+        ? 'npx github:FreeFades2Black/freefades2black-card'
+        : 'npx github:FreeFades2Black/freefades2black-card --json';
+    }
+
+    function copyText(txt, btn) {
+      navigator.clipboard.writeText(txt).then(() => {
+        const old = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = old; }, 1400);
+      });
+    }
+  </script>
+</body>
+</html>

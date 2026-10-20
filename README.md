@@ -1,63 +1,59 @@
-# FreeFades2Black Interactive Developer Card
+# `@freefades2black/card` — Interactive Cyberpunk Terminal Business Card
 
-> Zero-dependency, instantaneous interactive terminal developer profile card distributed via npm and executable directly via `npx freefades2black` with dual-mode ANSI box rendering and machine-readable JSON output.
+Interactive Cyberpunk Terminal Business Card for **William Free Hall (`FreeFades2Black`)** — Solutions Architect, Cloud/Data Engineer & U.S. Army Special Forces Veteran (`18Z / 18F`).
 
-**Lead Architect:** William Free Hall (Free) • [whall4.wh@gmail.com](mailto:whall4.wh@gmail.com) • [LinkedIn](https://linkedin.com/in/william-free-hall)  
-**Architecture Decisions:** [docs/adr/](docs/adr/) • **Operations & Runbooks:** [operations/runbooks/](operations/runbooks/) • **Observability:** [observability/](observability/)
-
----
-
-## 1-Command Execution
-
-```bash
-# Run interactive ANSI terminal card
-npx freefades2black
-
-# Or run machine-readable JSON mode
-npx freefades2black --json
-```
-
-### Verified Terminal Output
-
-```text
-╭──────────────────────────────────────────────────────────────────────────╮
-│                                                                          │
-│   William Free Hall (Free)                                               │
-│   Principal Cloud & AI Architect • DevSecOps Lead                        │
-│   18Z / 18F, U.S. Army Special Forces (Ret.)                             │
-│                                                                          │
-│   Email:     whall4.wh@gmail.com                                         │
-│   LinkedIn:  https://linkedin.com/in/william-free-hall                   │
-│   GitHub:    https://github.com/freefades2black                          │
-│                                                                          │
-╰──────────────────────────────────────────────────────────────────────────╯
-```
+🌐 **Live Interactive Web Card (Browser / Mobile / LinkedIn):**  
+👉 **[https://freefades2black.github.io/freefades2black-card/](https://freefades2black.github.io/freefades2black-card/)**
 
 ---
 
-## 1-Command Local Verification
+## ⚡ Quick Share & Run (Zero Auth / Any Machine)
 
-Prerequisites: `node >= 18`, `python >= 3.11`.
+Because GitHub Packages (`npm.pkg.github.com`) requires a personal access token even for public packages, share any of the **zero-config commands below** so anyone can run your card immediately without setting up an `.npmrc`:
+
+### 1. Universal `npx` (macOS, Linux, Windows Terminal, PowerShell)
+```bash
+npx github:FreeFades2Black/freefades2black-card
+```
+
+### 2. Machine-Readable JSON Mode
+```bash
+npx github:FreeFades2Black/freefades2black-card --json
+```
+
+### 3. Instant Zero-Node Terminal Stream (`curl` / PowerShell `irm`)
+Works even on machines without Node.js installed:
+```bash
+# Linux / macOS / Omarchy Arch Linux
+curl -sL https://freefades2black.github.io/freefades2black-card/card.ans
+
+# Windows PowerShell
+irm https://freefades2black.github.io/freefades2black-card/card.ans
+```
+
+---
+
+## 📦 GitHub Packages Installation (Authenticated)
+
+If installing via GitHub Packages (`@freefades2black/card`):
+```bash
+npm install @freefades2black/card --registry=https://npm.pkg.github.com
+```
+
+---
+
+## 🛠️ Local Development & Verification
 
 ```bash
-# Run pytest verification harness
+git clone https://github.com/FreeFades2Black/freefades2black-card.git
+cd freefades2black-card
+
+# Run card locally
+node bin/card.js
+
+# Run JSON output
+node bin/card.js --json
+
+# Run automated pytest verification suite
 python -m pytest tests/test_card.py -v
 ```
-
----
-
-## Performance & Scalability Benchmarks
-
-| Metric | Target SLA | Measured Benchmark | Verification Method |
-| :--- | :--- | :--- | :--- |
-| **CLI Cold Start Execution Time** | < 50 ms | **18.2 ms** | Node.js Process Execution Profiler |
-| **External Dependencies** | Exactly 0 | **0 Dependencies** | `package.json` Audit |
-| **Package Disk Footprint** | < 25 KB | **8.4 KB total** | Package Tarball Inspection |
-| **Windows UTF-8 Terminal Parity** | 100% | **Clean Unicode Borders** | Windows Terminal Console Audit |
-
----
-
-## Known Limitations & Operational Roadmap
-
-* **Interactive Menu Navigation:** Card currently displays static professional summary; interactive arrow-key terminal menu navigation for portfolio project drill-down is scheduled for Q4.
-* **Direct PGP Key Export:** Contact data currently provides email/social links; inline `--pgp` public key export flag is planned for Q1 2027.
