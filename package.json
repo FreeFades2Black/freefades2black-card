@@ -1,6 +1,6 @@
 {
   "name": "@freefades2black/card",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Interactive Cyberpunk Terminal Business Card & Executive Resume Hub for William 'Free' Hall",
   "main": "bin/card.js",
   "bin": {
@@ -11,6 +11,7 @@
   "files": [
     "bin/",
     "resume.pdf",
+    "William_Free_Hall_Senior_Solutions_Architect_v2.pdf",
     "README.md"
   ],
   "type": "module",
